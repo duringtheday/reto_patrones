@@ -1,0 +1,6 @@
+Reto: Patrones
+1. Crea una aplicación que te permita crear y añadir notas 
+utilizando la idea del patrón contenedor de React, implementa 
+`useContext` para manejar las notas. 🧠
+2. Intenta escribir el código de JSX y CSS que ves en esta 
+página renderizada. No tiene que ser perfecto! 🧑‍💻 
