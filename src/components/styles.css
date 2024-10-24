@@ -3,6 +3,18 @@ body {
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to top right, rgb(30, 0, 0), rgb(88, 0, 0)) no-repeat;
+    overflow: hidden;
+}
+body::after {
+    content: '';
+    position: absolute;  /* Positioning it absolutely to cover the entire body */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/img/fondo_cartas_1.png') no-repeat center center/cover;
+    opacity: 0.2;  /* Adjust the opacity for the image overlay */
+    z-index: -1;
 }
 
 .container-cards {
@@ -61,6 +73,42 @@ body {
     transform: scale(1.05);
     background-color: rgb(130, 0, 0);
 }
+
+.btn-prevNext {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.btn-prev {
+    padding: 5px;
+    background: none;
+    box-shadow: 1px 1px 5px 1px rgb(46, 46, 46);
+    border: none;
+    filter: brightness(0) invert(1);
+}
+.btn-prev:hover {
+    transform: scale(1.03);
+}
+.btn-next {
+    padding: 5px;
+    margin-left: 10px;
+    background: none;
+    box-shadow: -1px 1px 5px 1px rgb(46, 46, 46);
+    border: none;
+    transform: scaleX(-1);
+    filter: brightness(0) invert(1);
+}
+.btn-next:hover {
+    transform: scale(1.03) scaleX(-1); /* Scale up while keeping the flip */
+}
+
+/* .btn-prev-img {
+    margin: 0;
+}
+.btn-prev-img {
+    margin: 0;
+} */
+
 
 h1 {
     margin: 0;

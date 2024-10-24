@@ -2,6 +2,7 @@
 import { useContext, useState } from "react";
 import { CardsContext } from './CardsContainer';
 import '../../components/styles.css';
+import flechaIzquierda from '../../assets/img/flecha-izquierda.png';
 
 const Cards = () => {
     // Acceder al contexto de notas y la función para eliminar
@@ -45,19 +46,19 @@ const Cards = () => {
                     </div>
 
                     {/* Botones para navegar */}
-                    <div style={{ marginTop: "20px" }}>
-                        <button onClick={prevCard} disabled={currentIndex === 0}>
-                            Previous
+                    <div className="btn-prevNext">
+                        <button onClick={prevCard} disabled={currentIndex === 0} className="btn-prev"> 
+                            <img src={flechaIzquierda} alt="Flecha Retrocede" style={{ width: '30px' }} className="btn-prev-img" />
                         </button>
-                        <button onClick={nextCard} disabled={currentIndex === cards.length - 1} style={{ marginLeft: "10px" }}>
-                            Next
+                        <button onClick={nextCard} disabled={currentIndex === cards.length - 1} className="btn-next">
+                            <img src={flechaIzquierda} alt="Flecha Adelanta" style={{ width: '30px' }} className="btn-next-img" />
                         </button>
                     </div>
 
                     {/* Botón para eliminar la tarjeta */}
                     <button className="btn-delete"
                         onClick={handleDelete}
-                        style={{ marginTop: "10px", color: "white", border: "none", padding: "10px", cursor: "pointer" }}>
+                        style={{ marginTop: "20px", color: "white", border: "none", padding: "10px", cursor: "pointer" }}>
                         Delete
                     </button>
 
