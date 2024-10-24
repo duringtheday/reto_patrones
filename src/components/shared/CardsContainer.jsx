@@ -1,6 +1,7 @@
 // `CardsContainer.jsx`
 import { createContext, useState } from "react";
 import Cards from './Cards';
+import '../../components/styles.css';
 
 // Crear el contexto para manejar las notas
 export const CardsContext = createContext();
@@ -41,29 +42,31 @@ const CardContainer = () => {
     return (
         // Proveer el contexto con el estado de las tarjetas, la nueva tarjeta y las funciones
         <CardsContext.Provider value={{ cards, newCard, setNewCard, addCard, deleteCard }}>
-            <div>
+            <div className="container-cards">
                 <h1>Notes</h1>
                 {/* Formulario para agregar una nueva tarjeta */}
-                <div>
+                <div className="input">
                     {/* Campo de entrada para el título de la nueva tarjeta */}
-                    <input
+                    <input style={{ padding: '20px' }}
                         type="text"
                         placeholder="Title"
                         value={newCard.title}
                         onChange={(e) => setNewCard({ ...newCard, title: e.target.value })}
                         onKeyDown={handleKeyPress} // Captura la tecla Enter
                     />
+                </div>
+                <div>
                     {/* Campo de entrada para la descripción de la nueva tarjeta */}
-                    <input
+                    <textarea style={{ padding: '20px' }}
                         type="text"
                         placeholder="Description"
                         value={newCard.description}
                         onChange={(e) => setNewCard({ ...newCard, description: e.target.value })}
                         onKeyDown={handleKeyPress}
                     />
-                    {/* Botón para agregar la nueva tarjeta */}
-                    <button onClick={addCard}>Add Note</button>
                 </div>
+                {/* Botón para agregar la nueva tarjeta */}
+                <button onClick={addCard} className="btn-add">Add Note</button>
                 {/* Componente Cards para mostrar las tarjetas creadas */}
                 <Cards />
             </div>

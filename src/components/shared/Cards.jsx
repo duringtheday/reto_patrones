@@ -1,6 +1,7 @@
 // `Cards.jsx`
 import { useContext, useState } from "react";
 import { CardsContext } from './CardsContainer';
+import '../../components/styles.css';
 
 const Cards = () => {
     // Acceder al contexto de notas y la función para eliminar
@@ -36,9 +37,9 @@ const Cards = () => {
     return (
         <div>
             {cards.length > 0 ? (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div className="container-card">
                     {/* Mostrar solo la tarjeta en la posición actual */}
-                    <div style={{ border: "1px solid #ccc", padding: "20px", width: "300px", textAlign: "center" }}>
+                    <div className="reading-card">
                         <h3>{cards[currentIndex].title}</h3>
                         <p>{cards[currentIndex].description}</p>
                     </div>
@@ -46,25 +47,27 @@ const Cards = () => {
                     {/* Botones para navegar */}
                     <div style={{ marginTop: "20px" }}>
                         <button onClick={prevCard} disabled={currentIndex === 0}>
-                            Anterior
+                            Previous
                         </button>
                         <button onClick={nextCard} disabled={currentIndex === cards.length - 1} style={{ marginLeft: "10px" }}>
-                            Siguiente
+                            Next
                         </button>
                     </div>
 
                     {/* Botón para eliminar la tarjeta */}
-                    <button 
-                        onClick={handleDelete} 
-                        style={{ marginTop: "10px", backgroundColor: "red", color: "white", border: "none", padding: "10px", cursor: "pointer" }}>
-                        Eliminar
+                    <button className="btn-delete"
+                        onClick={handleDelete}
+                        style={{ marginTop: "10px", color: "white", border: "none", padding: "10px", cursor: "pointer" }}>
+                        Delete
                     </button>
 
                     {/* Mostrar el índice actual de la tarjeta */}
-                    <p>{`Tarjeta ${currentIndex + 1} de ${cards.length}`}</p>
+                    <p style={{ color: 'white', letterSpacing: '0.8px' }}>
+                        {`Card ${currentIndex + 1} of ${cards.length}`}
+                    </p>
                 </div>
             ) : (
-                <p>No notes yet.</p>
+                <p style={{ color: 'white' }}>No notes yet.</p>
             )}
         </div>
     );
